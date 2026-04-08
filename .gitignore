@@ -9,8 +9,9 @@ Cargo.lock
 data/search.db
 data/*.db
 
-# Environment
+# Environment — contains DATABASE_URL and PORT
 .env
+.env.local
 
 # Node
 frontend/node_modules/

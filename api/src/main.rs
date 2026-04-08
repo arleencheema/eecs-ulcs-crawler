@@ -112,8 +112,9 @@ async fn main() {
         .with_state(state)
         .layer(cors);
 
-    let addr = "0.0.0.0:3001";
+    let port = std::env::var("PORT").unwrap_or_else(|_| "3001".to_string());
+    let addr = format!("0.0.0.0:{port}");
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     println!("Listening on http://{addr}");
-    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
