@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
+  async headers() {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:3001/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
       },
     ];
   },

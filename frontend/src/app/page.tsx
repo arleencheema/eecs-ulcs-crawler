@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 interface CourseResult {
@@ -118,7 +120,7 @@ export default function Home() {
     setStatus("loading");
     setData(null);
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+      const res = await fetch(`${API_URL}/search?q=${encodeURIComponent(q)}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json: SearchResponse = await res.json();
       setData(json);
