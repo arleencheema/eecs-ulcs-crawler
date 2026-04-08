@@ -1,0 +1,182 @@
+[
+  {
+    "id": 376,
+    "title": "Foundations of Computer Science",
+    "description": "Introduction to the theory of computation, including formal languages, automata, computability, and complexity. Covers finite automata, context-free grammars, Turing machines, decidability, and NP-completeness.",
+    "credits": "4",
+    "level": 300,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-376",
+    "workload_score": 0.0
+  },
+  {
+    "id": 388,
+    "title": "Introduction to Computer Security",
+    "description": "Introduction to the principles and practices of computer security as applied to software, host systems, and networks. Covers cryptographic functions, protocols, threats, defenses, incident response, and computer forensics.",
+    "credits": "4",
+    "level": 300,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-388",
+    "workload_score": 0.0
+  },
+  {
+    "id": 390,
+    "title": "Introduction to Computer Organization",
+    "description": "Hardware organization of computer systems. Number systems, machine-level data representation, assembly language programming, memory hierarchy, caching, pipelining, and input/output.",
+    "credits": "4",
+    "level": 300,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-390",
+    "workload_score": 0.0
+  },
+  {
+    "id": 398,
+    "title": "Special Topics",
+    "description": "Topics of current interest selected by faculty. Content varies by semester. May be repeated for credit when topics differ.",
+    "credits": "1-4",
+    "level": 300,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-398",
+    "workload_score": 0.0
+  },
+  {
+    "id": 441,
+    "title": "Mobile App Development for Entrepreneurs",
+    "description": "Build iOS and Android applications using modern frameworks. Project-based course covering UI design, backend integration, app store deployment, and startup pitching. Low weekly workload relative to other ULCS.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-441",
+    "workload_score": 0.0
+  },
+  {
+    "id": 445,
+    "title": "Introduction to Machine Learning",
+    "description": "Core machine learning techniques including regression, classification, clustering, neural networks, and deep learning. Covers optimization, model selection, and evaluation on real-world datasets.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-445",
+    "workload_score": 0.0
+  },
+  {
+    "id": 467,
+    "title": "Conversational Artificial Intelligence",
+    "description": "Design and implementation of conversational AI systems. Topics include dialogue management, intent detection, slot filling, natural language understanding, and evaluation of chatbot systems.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-467",
+    "workload_score": 0.0
+  },
+  {
+    "id": 470,
+    "title": "Introduction to Artificial Intelligence",
+    "description": "Search algorithms, constraint satisfaction, Bayesian reasoning, probabilistic graphical models, planning, reinforcement learning, and introductory machine learning. Broad survey of AI subfields.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-470",
+    "workload_score": 0.0
+  },
+  {
+    "id": 476,
+    "title": "Computer Vision",
+    "description": "Image formation, low-level feature extraction, edge and corner detection, optical flow, object recognition, convolutional neural networks, and 3D reconstruction from images.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-476",
+    "workload_score": 0.0
+  },
+  {
+    "id": 480,
+    "title": "Database Management Systems",
+    "description": "Relational model, SQL, query optimization, transaction processing, concurrency control, recovery, and NoSQL systems. Students implement components of a relational database engine.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-480",
+    "workload_score": 0.0
+  },
+  {
+    "id": 481,
+    "title": "Introduction to Operating Systems",
+    "description": "Operating system design and implementation: processes, threads, concurrency, synchronization, deadlock, scheduling, memory management, file systems, and security. Several substantial programming projects.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-481",
+    "workload_score": 0.0
+  },
+  {
+    "id": 482,
+    "title": "Introduction to Operating Systems",
+    "description": "Multi-tasking, concurrency and synchronization, inter-process communication, deadlock, scheduling, memory and storage management, file systems, and protection. Substantial programming in a concurrent environment.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-482",
+    "workload_score": 0.0
+  },
+  {
+    "id": 484,
+    "title": "Computer Networks",
+    "description": "Network architecture and protocols, layered models, TCP/IP, routing algorithms, congestion control, application-layer protocols, network security, and software-defined networking.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-484",
+    "workload_score": 0.0
+  },
+  {
+    "id": 485,
+    "title": "Web Systems",
+    "description": "Large-scale web systems: search engines, MapReduce, social networks, content delivery. Covers web crawling, inverted indexes, link analysis, scalable storage, and distributed computing fundamentals.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-485",
+    "workload_score": 0.0
+  },
+  {
+    "id": 486,
+    "title": "Information Retrieval and Web Search",
+    "description": "Indexing, retrieval models including BM25 and neural ranking, text classification, question answering, transformer models, and evaluation of search systems. Heavy focus on natural language processing techniques.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-486",
+    "workload_score": 0.0
+  },
+  {
+    "id": 489,
+    "title": "Special Topics: Computer Networks",
+    "description": "Advanced topics in computer networking including wireless networks, peer-to-peer systems, network measurement, and emerging network architectures. Content varies by semester.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-489",
+    "workload_score": 0.0
+  },
+  {
+    "id": 490,
+    "title": "Programming Languages",
+    "description": "Programming languages as mathematical structures and user interfaces. Covers type systems, operational semantics, functional programming, logic programming, and techniques for reasoning about program behavior.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-490",
+    "workload_score": 0.0
+  },
+  {
+    "id": 492,
+    "title": "Software Engineering",
+    "description": "Software development processes, requirements engineering, architecture, design patterns, testing strategies, code review, and project management. Large team project over the semester.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-492",
+    "workload_score": 0.0
+  },
+  {
+    "id": 493,
+    "title": "User Interface Development",
+    "description": "Concepts and techniques for designing computer system user interfaces. Task analysis, display and interaction design, usability evaluation, and implementation using an object-oriented application framework.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-493",
+    "workload_score": 0.0
+  },
+  {
+    "id": 496,
+    "title": "Compiler Construction",
+    "description": "Lexical analysis, parsing, semantic analysis, type checking, intermediate representations, optimization, and code generation. Students build a complete compiler for a substantial programming language.",
+    "credits": "4",
+    "level": 400,
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/#eecs-496",
+    "workload_score": 0.0
+  }
+]
