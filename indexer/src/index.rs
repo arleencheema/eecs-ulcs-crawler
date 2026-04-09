@@ -36,6 +36,17 @@ pub fn compute_workload_score(description: &str) -> f32 {
     (high - low).clamp(0.0, 1.0)
 }
 
+/// Aggregate statistics returned by [`Index::stats`].
+#[derive(Debug)]
+pub struct IndexStats {
+    pub total_courses:       usize,
+    pub avg_workload_score:  f32,
+    pub high_workload_count: usize,
+    pub low_workload_count:  usize,
+    /// Course count keyed by 100-level bucket (e.g. 300, 400).
+    pub levels: HashMap<u32, usize>,
+}
+
 /// Inverted index with BM25 ranking support.
 pub struct Index {
     /// term -> [(doc_id, term_freq)]
@@ -136,6 +147,35 @@ impl Index {
 
         results.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
         results
+    }
+
+    /// Compute aggregate statistics over all indexed documents.
+    pub fn stats(&self) -> IndexStats {
+        let total_courses = self.doc_count as usize;
+        let docs: Vec<&Document> = self.docs.values().collect();
+
+        let avg_workload_score = if total_courses == 0 {
+            0.0
+        } else {
+            docs.iter().map(|d| d.workload_score).sum::<f32>() / total_courses as f32
+        };
+
+        let high_workload_count = docs.iter().filter(|d| d.workload_score > 0.5).count();
+        let low_workload_count  = docs.iter().filter(|d| d.workload_score <= 0.3).count();
+
+        let mut levels: HashMap<u32, usize> = HashMap::new();
+        for doc in &docs {
+            let bucket = (doc.level / 100) * 100;
+            *levels.entry(bucket).or_insert(0) += 1;
+        }
+
+        IndexStats {
+            total_courses,
+            avg_workload_score,
+            high_workload_count,
+            low_workload_count,
+            levels,
+        }
     }
 
     /// Count tokens for a stored document (used inside search for dl normalization).

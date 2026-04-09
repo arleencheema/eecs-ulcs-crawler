@@ -80,6 +80,22 @@ async fn search(
     })))
 }
 
+async fn stats(State(state): State<AppState>) -> Json<Value> {
+    let s = state.index.read().await.stats();
+    let levels: serde_json::Map<String, Value> = s
+        .levels
+        .into_iter()
+        .map(|(k, v)| (k.to_string(), json!(v)))
+        .collect();
+    Json(json!({
+        "total_courses":       s.total_courses,
+        "avg_workload_score":  (s.avg_workload_score * 100.0).round() / 100.0,
+        "high_workload_count": s.high_workload_count,
+        "low_workload_count":  s.low_workload_count,
+        "levels":              levels,
+    }))
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 #[tokio::main]
@@ -109,6 +125,7 @@ async fn main() {
     let app = Router::new()
         .route("/health", get(health))
         .route("/search", get(search))
+        .route("/stats", get(stats))
         .with_state(state)
         .layer(cors);
 
