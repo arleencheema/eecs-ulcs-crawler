@@ -31,7 +31,7 @@ async fn main() -> Result<()> {
     let query = "easy low workload";
     println!("Query: {query:?}\n");
 
-    for (doc, score) in idx.search(query) {
+    for (doc, score) in idx.search(query, None) {
         println!("  [{score:.3}] ({}) {}", doc.id, doc.title);
     }
 

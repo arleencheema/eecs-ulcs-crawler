@@ -25,7 +25,10 @@ struct AppState {
 
 #[derive(Deserialize)]
 struct SearchParams {
-    q: Option<String>,
+    q:     Option<String>,
+    page:  Option<usize>,
+    limit: Option<usize>,
+    level: Option<u32>,
 }
 
 #[derive(Serialize)]
@@ -54,10 +57,13 @@ async fn search(
         _ => return Err(StatusCode::BAD_REQUEST),
     };
 
+    let page  = params.page.unwrap_or(1).max(1);
+    let limit = params.limit.unwrap_or(10).clamp(1, 20);
+
     let start = Instant::now();
-    let results: Vec<SearchEntry> = {
+    let all_results: Vec<SearchEntry> = {
         let idx = state.index.read().await;
-        idx.search(&q)
+        idx.search(&q, params.level)
             .into_iter()
             .map(|(doc, score)| SearchEntry {
                 title:          doc.title,
@@ -71,11 +77,16 @@ async fn search(
             .collect()
     };
     let query_ms = start.elapsed().as_millis();
-    let total = results.len();
+    let total = all_results.len();
+
+    let offset = (page - 1) * limit;
+    let results: Vec<&SearchEntry> = all_results.iter().skip(offset).take(limit).collect();
 
     Ok(Json(json!({
         "query_ms": query_ms,
         "total":    total,
+        "page":     page,
+        "limit":    limit,
         "results":  results,
     })))
 }

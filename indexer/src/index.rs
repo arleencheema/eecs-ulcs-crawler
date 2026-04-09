@@ -103,7 +103,8 @@ impl Index {
     }
 
     /// BM25 search. Returns (Document, score) pairs sorted by score descending.
-    pub fn search(&self, query: &str) -> Vec<(Document, f32)> {
+    /// If `level_filter` is `Some(n)`, only documents whose `level` field equals `n` are scored.
+    pub fn search(&self, query: &str, level_filter: Option<u32>) -> Vec<(Document, f32)> {
         const K1: f32 = 1.2;
         const B: f32 = 0.75;
 
@@ -138,9 +139,13 @@ impl Index {
         let mut results: Vec<(Document, f32)> = scores
             .into_iter()
             .filter_map(|(doc_id, bm25_score)| {
-                self.docs.get(&doc_id).map(|doc| {
-                    let final_score = 0.7 * bm25_score + 0.3 * (1.0 - doc.workload_score);
-                    (doc.clone(), final_score)
+                self.docs.get(&doc_id).and_then(|doc| {
+                    if level_filter.map_or(true, |lvl| doc.level == lvl) {
+                        let final_score = 0.7 * bm25_score + 0.3 * (1.0 - doc.workload_score);
+                        Some((doc.clone(), final_score))
+                    } else {
+                        None
+                    }
                 })
             })
             .collect();
@@ -271,7 +276,7 @@ mod tests {
     #[test]
     fn search_returns_relevant_doc_first() {
         let idx = build_test_index();
-        let results = idx.search("web systems");
+        let results = idx.search("web systems", None);
         assert!(!results.is_empty(), "expected at least one result");
         assert_eq!(results[0].0.id, 1, "doc 1 (Web Systems) should rank first");
     }
@@ -279,7 +284,7 @@ mod tests {
     #[test]
     fn search_low_workload_ranks_mobile() {
         let idx = build_test_index();
-        let results = idx.search("easy low workload");
+        let results = idx.search("easy low workload", None);
         assert!(!results.is_empty());
         assert_eq!(
             results[0].0.id, 3,
@@ -290,14 +295,14 @@ mod tests {
     #[test]
     fn search_unknown_query_returns_empty() {
         let idx = build_test_index();
-        let results = idx.search("xyzzy frobnicator");
+        let results = idx.search("xyzzy frobnicator", None);
         assert!(results.is_empty());
     }
 
     #[test]
     fn search_results_sorted_descending() {
         let idx = build_test_index();
-        let results = idx.search("systems");
+        let results = idx.search("systems", None);
         let scores: Vec<f32> = results.iter().map(|(_, s)| *s).collect();
         for w in scores.windows(2) {
             assert!(w[0] >= w[1], "results not sorted descending");
